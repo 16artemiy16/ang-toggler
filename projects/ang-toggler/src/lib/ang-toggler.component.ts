@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'lib-ang-toggler',
-  template: `
-    <p>
-      ang-toggler works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './ang-toggler.component.html',
+  styleUrls: ['./ang-toggler.component.scss']
 })
 export class AngTogglerComponent implements OnInit {
 
