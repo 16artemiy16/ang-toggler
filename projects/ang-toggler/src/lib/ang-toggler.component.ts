@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ang-toggler',
+  selector: 'ang-toggler',
   templateUrl: './ang-toggler.component.html',
   styleUrls: ['./ang-toggler.component.scss']
 })
