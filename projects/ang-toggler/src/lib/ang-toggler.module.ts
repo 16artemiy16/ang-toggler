@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { AngTogglerComponent } from './ang-toggler.component';
+import { AngTogglerComponent } from './components/ang-toggler/ang-toggler.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -8,6 +9,7 @@ import { AngTogglerComponent } from './ang-toggler.component';
     AngTogglerComponent
   ],
   imports: [
+    CommonModule
   ],
   exports: [
     AngTogglerComponent
