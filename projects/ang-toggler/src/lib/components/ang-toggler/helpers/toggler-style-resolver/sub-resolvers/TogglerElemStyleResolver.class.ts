@@ -8,5 +8,5 @@ export abstract class TogglerElemStyleResolver {
   }
 
   abstract getClasses(): Record<string, boolean>;
-  abstract getStyles(styling: TogglerStylingI, isActive: boolean): Record<string, string>;
+  abstract getStyles(styling: TogglerStylingI, isActive: boolean, isDisabled: boolean): Record<string, string>;
 }

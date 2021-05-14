@@ -10,10 +10,11 @@ export class SwitchStyleResolver extends TogglerElemStyleResolver {
     };
   }
 
-  getStyles(styling: TogglerStylingI, isActive: boolean): Record<string, string> {
+  getStyles(styling: TogglerStylingI, isActive: boolean, isDisabled: boolean ): Record<string, string> {
     const { colorBackground, colorBackgroundActive, colorBackgroundInactive } = styling;
     return {
-      background: (isActive ? colorBackgroundActive : colorBackgroundInactive) || colorBackground || ''
+      background: (isActive ? colorBackgroundActive : colorBackgroundInactive) || colorBackground || '',
+      cursor: isDisabled ? 'not-allowed' : ''
     };
   }
 }

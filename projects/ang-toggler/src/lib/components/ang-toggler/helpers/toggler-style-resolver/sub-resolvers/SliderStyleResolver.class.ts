@@ -6,7 +6,7 @@ export class SliderStyleResolver extends TogglerElemStyleResolver {
     return {};
   }
 
-  getStyles(styling: TogglerStylingI, isActive: boolean): Record<string, string> {
+  getStyles(styling: TogglerStylingI, isActive: boolean, isDisabled: boolean): Record<string, string> {
     const { colorSlider, colorSliderActive, colorSliderInactive } = styling;
     return {
       background: (isActive ? colorSliderActive : colorSliderInactive) || colorSlider || ''

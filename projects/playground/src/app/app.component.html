@@ -1,2 +1,2 @@
-Round: <ang-toggler></ang-toggler> <br />
-Square: <ang-toggler tgl-square></ang-toggler>
+Round: <ang-toggler [(ngModel)]="val1" [disabled]="val2"></ang-toggler> {{ val1 }} <br />
+Square: <ang-toggler tgl-square [(ngModel)]="val2"></ang-toggler> {{ val2 }}
