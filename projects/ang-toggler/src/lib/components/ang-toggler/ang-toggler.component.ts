@@ -1,7 +1,7 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, Input } from '@angular/core';
 import { TogglerStyleResolver } from './helpers/toggler-style-resolver';
 import { TogglerStylingI } from '../../models/toggler-styling.interface';
-import { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './toggler-style-resolver.provider';
+import { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';
 
 @Component({
   selector: 'ang-toggler, ang-toggler[tgl-square]',
@@ -9,7 +9,7 @@ import { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './toggler-style-resolv
   styleUrls: ['./ang-toggler.component.scss'],
   providers: [STYLE_RESOLVER_PROVIDERS]
 })
-export class AngTogglerComponent implements OnInit {
+export class AngTogglerComponent {
   @Input() styling: TogglerStylingI = {
     colorSliderInactive: 'red',
     colorSliderActive: 'green',
@@ -23,6 +23,11 @@ export class AngTogglerComponent implements OnInit {
     @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver
   ) {}
 
+  @HostListener('click')
+  toggle(): void {
+    this.isActive = !this.isActive;
+  }
+
   getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {
     return this.styleResolver.for(elem).getClasses();
   }
@@ -30,8 +35,4 @@ export class AngTogglerComponent implements OnInit {
   getStyles(elem: 'switch' | 'slider'): Record<string, string> {
     return this.styleResolver.for(elem).getStyles(this.styling, this.isActive);
   }
-
-  ngOnInit(): void {
-  }
-
 }

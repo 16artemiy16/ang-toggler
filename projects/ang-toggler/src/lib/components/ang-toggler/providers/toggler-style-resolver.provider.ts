@@ -1,5 +1,5 @@
 import { ElementRef, InjectionToken, Provider } from '@angular/core';
-import { TogglerStyleResolver } from './helpers/toggler-style-resolver';
+import { TogglerStyleResolver } from '../helpers/toggler-style-resolver';
 
 export const STYLE_RESOLVER = new InjectionToken<TogglerStyleResolver>('Toggler Style Resolver');
 export const STYLE_RESOLVER_PROVIDERS: Provider[] = [
