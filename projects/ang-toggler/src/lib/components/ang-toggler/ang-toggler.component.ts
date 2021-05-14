@@ -22,7 +22,20 @@ export class AngTogglerComponent implements ControlValueAccessor {
     colorSliderInactive: 'red',
     colorSliderActive: 'green',
     colorBackgroundInactive: '#cdc7c7',
-    colorBackgroundActive: '#16ff00'
+    colorBackgroundActive: '#16ff00',
+    border: {
+      color: 'grey',
+      width: '3px',
+      style: 'dotted'
+    },
+    borderActive: {
+      color: 'black',
+      width: '3px',
+    },
+    borderInactive: {
+      width: '3px',
+      style: 'solid'
+    }
   };
 
   isActive = false;
