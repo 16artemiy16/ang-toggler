@@ -1,8 +1,13 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { AngTogglerComponent } from './components/ang-toggler/ang-toggler.component';
 import { CommonModule } from '@angular/common';
+import { TogglerStylingI } from './models/toggler-styling.interface';
 
+export interface AngTogglerConfigI {
+  styling?: TogglerStylingI;
+}
 
+export const CONFIG_TOKEN = new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig');
 
 @NgModule({
   declarations: [
@@ -15,4 +20,14 @@ import { CommonModule } from '@angular/common';
     AngTogglerComponent
   ]
 })
-export class AngTogglerModule { }
+export class AngTogglerModule {
+  static forRoot(config: AngTogglerConfigI = {}): ModuleWithProviders<AngTogglerModule> {
+    return {
+      ngModule: AngTogglerModule,
+      providers: [{
+        provide: CONFIG_TOKEN,
+        useValue: config
+      }]
+    };
+  }
+}

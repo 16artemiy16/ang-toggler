@@ -3,6 +3,8 @@ import { TogglerStyleResolver } from './helpers/toggler-style-resolver';
 import { TogglerStylingI } from '../../models/toggler-styling.interface';
 import { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AngTogglerService } from '../../ang-toggler.service';
+import { mergeObjects } from '../../utils/object.utils';
 
 @Component({
   selector: 'ang-toggler, ang-toggler[tgl-square]',
@@ -18,25 +20,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class AngTogglerComponent implements ControlValueAccessor {
-  @Input() styling: TogglerStylingI = {
-    colorSliderInactive: 'red',
-    colorSliderActive: 'green',
-    colorBackgroundInactive: '#cdc7c7',
-    colorBackgroundActive: '#16ff00',
-    border: {
-      color: 'grey',
-      width: '3px',
-      style: 'dotted'
-    },
-    borderActive: {
-      color: 'black',
-      width: '3px',
-    },
-    borderInactive: {
-      width: '3px',
-      style: 'solid'
-    }
-  };
+  @Input()
+  styling: TogglerStylingI = {};
 
   isActive = false;
   isDisabled = false;
@@ -45,9 +30,13 @@ export class AngTogglerComponent implements ControlValueAccessor {
   private onTouched = () => {};
 
   constructor(
-    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver
+    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,
+    private readonly togglerService: AngTogglerService
   ) {}
 
+  private get resultStyling(): TogglerStylingI {
+    return mergeObjects(this.togglerService.moduleStyling, this.styling);
+  }
 
   @HostListener('click')
   toggle(): void {
@@ -79,6 +68,6 @@ export class AngTogglerComponent implements ControlValueAccessor {
   }
 
   getStyles(elem: 'switch' | 'slider'): Record<string, string> {
-    return this.styleResolver.for(elem).getStyles(this.styling, this.isActive, this.isDisabled);
+    return this.styleResolver.for(elem).getStyles(this.resultStyling, this.isActive, this.isDisabled);
   }
 }
