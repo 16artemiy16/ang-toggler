@@ -1,4 +1,12 @@
-import { Component, forwardRef, HostListener, Inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  HostListener,
+  Inject,
+  Input
+} from '@angular/core';
 import { TogglerStyleResolver } from './helpers/toggler-style-resolver';
 import { TogglerStylingI } from '../../models/toggler-styling.interface';
 import { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';
@@ -10,6 +18,7 @@ import { mergeObjects } from '../../utils/object.utils';
   selector: 'ang-toggler, ang-toggler[tgl-square]',
   templateUrl: './ang-toggler.component.html',
   styleUrls: ['./ang-toggler.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     STYLE_RESOLVER_PROVIDERS,
     {
@@ -31,7 +40,8 @@ export class AngTogglerComponent implements ControlValueAccessor {
 
   constructor(
     @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,
-    private readonly togglerService: AngTogglerService
+    private readonly togglerService: AngTogglerService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   private get resultStyling(): TogglerStylingI {
@@ -57,10 +67,12 @@ export class AngTogglerComponent implements ControlValueAccessor {
 
   writeValue(v: boolean): void {
     this.isActive = v;
+    this.changeDetectorRef.markForCheck();
   }
 
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
+    this.changeDetectorRef.markForCheck();
   }
 
   getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {
