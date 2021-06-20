@@ -32,6 +32,10 @@ export class AngTogglerComponent implements ControlValueAccessor {
   @Input()
   styling: TogglerStylingI = {};
 
+  @Input() set disabled(v: boolean | string) {
+    this.setDisabledState(v === true || v === '');
+  }
+
   isActive = false;
   isDisabled = false;
 

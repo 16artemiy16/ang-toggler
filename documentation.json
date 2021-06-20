@@ -726,7 +726,7 @@
     "components": [
         {
             "name": "AngTogglerComponent",
-            "id": "component-AngTogglerComponent-a76a0001e2cb05f656f48473609b6239",
+            "id": "component-AngTogglerComponent-a68ba7cc25ff77a53d9cd9e12804f4ce",
             "file": "projects/ang-toggler/src/lib/components/ang-toggler/ang-toggler.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -753,6 +753,11 @@
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "disabled",
+                    "line": 35,
+                    "type": "boolean"
+                },
+                {
                     "name": "styling",
                     "defaultValue": "{}",
                     "line": 33,
@@ -767,7 +772,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 40
                 },
                 {
                     "name": "isDisabled",
@@ -775,7 +780,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 41
                 },
                 {
                     "name": "onChange",
@@ -783,7 +788,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 38,
+                    "line": 43,
                     "modifierKind": [
                         112
                     ]
@@ -794,7 +799,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 39,
+                    "line": 44,
                     "modifierKind": [
                         112
                     ]
@@ -812,7 +817,7 @@
                     "optional": false,
                     "returnType": "Record<string, boolean>",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 83,
                     "jsdoctags": [
                         {
                             "name": "elem",
@@ -834,7 +839,7 @@
                     "optional": false,
                     "returnType": "Record<string, string>",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 87,
                     "jsdoctags": [
                         {
                             "name": "elem",
@@ -856,7 +861,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 65,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -878,7 +883,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 69,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -900,7 +905,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 73,
+                    "line": 78,
                     "jsdoctags": [
                         {
                             "name": "isDisabled",
@@ -922,7 +927,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 73,
                     "jsdoctags": [
                         {
                             "name": "v",
@@ -940,13 +945,13 @@
                     "name": "click",
                     "args": [],
                     "argsDecorator": [],
-                    "line": 52
+                    "line": 57
                 }
             ],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  forwardRef,\n  HostListener,\n  Inject,\n  Input\n} from '@angular/core';\nimport { TogglerStyleResolver } from './helpers/toggler-style-resolver';\nimport { TogglerStylingI } from '../../models/toggler-styling.interface';\nimport { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { AngTogglerService } from '../../ang-toggler.service';\nimport { mergeObjects } from '../../utils/object.utils';\n\n@Component({\n  selector: 'ang-toggler, ang-toggler[tgl-square]',\n  templateUrl: './ang-toggler.component.html',\n  styleUrls: ['./ang-toggler.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [\n    STYLE_RESOLVER_PROVIDERS,\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AngTogglerComponent),\n      multi: true\n    }\n  ]\n})\nexport class AngTogglerComponent implements ControlValueAccessor {\n  @Input()\n  styling: TogglerStylingI = {};\n\n  isActive = false;\n  isDisabled = false;\n\n  private onChange = (v: boolean) => {};\n  private onTouched = () => {};\n\n  constructor(\n    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,\n    private readonly togglerService: AngTogglerService,\n    private readonly changeDetectorRef: ChangeDetectorRef\n  ) {}\n\n  private get resultStyling(): TogglerStylingI {\n    return mergeObjects(this.togglerService.moduleStyling, this.styling);\n  }\n\n  @HostListener('click')\n  toggle(): void {\n    if (!this.isDisabled) {\n      this.isActive = !this.isActive;\n      this.onTouched();\n      this.onChange(this.isActive);\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  writeValue(v: boolean): void {\n    this.isActive = v;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {\n    return this.styleResolver.for(elem).getClasses();\n  }\n\n  getStyles(elem: 'switch' | 'slider'): Record<string, string> {\n    return this.styleResolver.for(elem).getStyles(this.resultStyling, this.isActive, this.isDisabled);\n  }\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  forwardRef,\n  HostListener,\n  Inject,\n  Input\n} from '@angular/core';\nimport { TogglerStyleResolver } from './helpers/toggler-style-resolver';\nimport { TogglerStylingI } from '../../models/toggler-styling.interface';\nimport { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { AngTogglerService } from '../../ang-toggler.service';\nimport { mergeObjects } from '../../utils/object.utils';\n\n@Component({\n  selector: 'ang-toggler, ang-toggler[tgl-square]',\n  templateUrl: './ang-toggler.component.html',\n  styleUrls: ['./ang-toggler.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [\n    STYLE_RESOLVER_PROVIDERS,\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AngTogglerComponent),\n      multi: true\n    }\n  ]\n})\nexport class AngTogglerComponent implements ControlValueAccessor {\n  @Input()\n  styling: TogglerStylingI = {};\n\n  @Input() set disabled(v: boolean) {\n    console.log('SET DISABLED', v);\n    this.setDisabledState(v);\n  }\n\n  isActive = false;\n  isDisabled = false;\n\n  private onChange = (v: boolean) => {};\n  private onTouched = () => {};\n\n  constructor(\n    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,\n    private readonly togglerService: AngTogglerService,\n    private readonly changeDetectorRef: ChangeDetectorRef\n  ) {}\n\n  private get resultStyling(): TogglerStylingI {\n    return mergeObjects(this.togglerService.moduleStyling, this.styling);\n  }\n\n  @HostListener('click')\n  toggle(): void {\n    if (!this.isDisabled) {\n      this.isActive = !this.isActive;\n      this.onTouched();\n      this.onChange(this.isActive);\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  writeValue(v: boolean): void {\n    this.isActive = v;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {\n    return this.styleResolver.for(elem).getClasses();\n  }\n\n  getStyles(elem: 'switch' | 'slider'): Record<string, string> {\n    return this.styleResolver.for(elem).getStyles(this.resultStyling, this.isActive, this.isDisabled);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -972,7 +977,7 @@
                         "type": "ChangeDetectorRef"
                     }
                 ],
-                "line": 39,
+                "line": 44,
                 "jsdoctags": [
                     {
                         "name": "styleResolver",
@@ -1001,13 +1006,37 @@
                 "ControlValueAccessor"
             ],
             "accessors": {
+                "disabled": {
+                    "name": "disabled",
+                    "setSignature": {
+                        "name": "disabled",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 35,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
                 "resultStyling": {
                     "name": "resultStyling",
                     "getSignature": {
                         "name": "resultStyling",
                         "type": "",
                         "returnType": "TogglerStylingI",
-                        "line": 47
+                        "line": 52
                     }
                 }
             },
@@ -1389,6 +1418,14 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "Common",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/AngToggler.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "CONFIG_TOKEN",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1403,6 +1440,22 @@
                 "file": "projects/playground/src/test.ts",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "DependingOnState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/AngToggler.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Disabled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/AngToggler.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "environment",
@@ -1520,9 +1573,9 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/Header.stories.ts",
-                "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                "file": "stories/AngToggler.stories.ts",
+                "type": "Story<AngTogglerComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n  template: `\n    <ang-toggler></ang-toggler>\n  `\n})"
             },
             {
                 "name": "Template",
@@ -1536,17 +1589,17 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "stories/Page.stories.ts",
                 "type": "Story<Page>",
                 "defaultValue": "(args: Page) => ({\n  props: args,\n})"
-            },
-            {
-                "name": "TypeOne",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/AngToggler.stories.ts",
-                "type": "",
-                "defaultValue": "() => ({\n  props: {\n    styling: {\n      colorSlider: 'green',\n      border: '1px dotted black',\n      colorBackground: 'pink',\n    },\n    disabled: true\n  },\n  template: `\n    <ang-toggler></ang-toggler>\n  `\n})"
             }
         ],
         "functions": [
@@ -1618,6 +1671,40 @@
             }
         ],
         "groupedVariables": {
+            "stories/AngToggler.stories.ts": [
+                {
+                    "name": "Common",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/AngToggler.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "DependingOnState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/AngToggler.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Disabled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/AngToggler.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/AngToggler.stories.ts",
+                    "type": "Story<AngTogglerComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n  template: `\n    <ang-toggler></ang-toggler>\n  `\n})"
+                }
+            ],
             "projects/ang-toggler/src/lib/ang-toggler.module.ts": [
                 {
                     "name": "CONFIG_TOKEN",
@@ -1787,16 +1874,6 @@
                     "type": "Provider[]",
                     "defaultValue": "[\n  {\n    provide: STYLE_RESOLVER,\n    deps: [ElementRef],\n    useFactory: styleResolverFactory\n  }\n]"
                 }
-            ],
-            "stories/AngToggler.stories.ts": [
-                {
-                    "name": "TypeOne",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/AngToggler.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\n  props: {\n    styling: {\n      colorSlider: 'green',\n      border: '1px dotted black',\n      colorBackground: 'pink',\n    },\n    disabled: true\n  },\n  template: `\n    <ang-toggler></ang-toggler>\n  `\n})"
-                }
             ]
         },
         "groupedFunctions": {
@@ -1891,7 +1968,7 @@
         ]
     },
     "coverage": {
-        "count": 5,
+        "count": 4,
         "status": "low",
         "files": [
             {
@@ -1928,7 +2005,7 @@
                 "linktype": "component",
                 "name": "AngTogglerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -2078,7 +2155,37 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "TypeOne",
+                "name": "Common",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/AngToggler.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DependingOnState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/AngToggler.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Disabled",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/AngToggler.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
