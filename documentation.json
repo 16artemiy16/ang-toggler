@@ -1,0 +1,2225 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "AngTogglerConfigI",
+            "id": "interface-AngTogglerConfigI-5b829c3288689e6e1ee78d709f63db07",
+            "file": "projects/ang-toggler/src/lib/ang-toggler.module.ts",
+            "type": "interface",
+            "sourceCode": "import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';\nimport { AngTogglerComponent } from './components/ang-toggler/ang-toggler.component';\nimport { CommonModule } from '@angular/common';\nimport { TogglerStylingI } from './models/toggler-styling.interface';\n\nexport interface AngTogglerConfigI {\n  styling?: TogglerStylingI;\n}\n\nexport const CONFIG_TOKEN = new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig');\n\n@NgModule({\n  declarations: [\n    AngTogglerComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    AngTogglerComponent\n  ]\n})\nexport class AngTogglerModule {\n  static forRoot(config: AngTogglerConfigI = {}): ModuleWithProviders<AngTogglerModule> {\n    return {\n      ngModule: AngTogglerModule,\n      providers: [{\n        provide: CONFIG_TOKEN,\n        useValue: config\n      }]\n    };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "styling",
+                    "type": "TogglerStylingI",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "BorderStylingObjI",
+            "id": "interface-BorderStylingObjI-2345b6368b16c231620bb21cec29c510",
+            "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+            "type": "interface",
+            "sourceCode": "export type borderStyle = 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';\n\nexport interface BorderStylingObjI {\n    color?: string;\n    style?: borderStyle;\n    width?: string;\n}\n\nexport type borderStylingType = BorderStylingObjI | string;\n\nexport interface TogglerStylingI{\n  colorSlider?: string;\n  colorSliderInactive?: string;\n  colorSliderActive?: string;\n  colorBackground?: string;\n  colorBackgroundInactive?: string;\n  colorBackgroundActive?: string;\n  border?: borderStylingType;\n  borderActive?: borderStylingType;\n  borderInactive?: borderStylingType;\n}\n",
+            "properties": [
+                {
+                    "name": "color",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "style",
+                    "type": "borderStyle",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "width",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "TogglerStylingI",
+            "id": "interface-TogglerStylingI-2345b6368b16c231620bb21cec29c510",
+            "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+            "type": "interface",
+            "sourceCode": "export type borderStyle = 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';\n\nexport interface BorderStylingObjI {\n    color?: string;\n    style?: borderStyle;\n    width?: string;\n}\n\nexport type borderStylingType = BorderStylingObjI | string;\n\nexport interface TogglerStylingI{\n  colorSlider?: string;\n  colorSliderInactive?: string;\n  colorSliderActive?: string;\n  colorBackground?: string;\n  colorBackgroundInactive?: string;\n  colorBackgroundActive?: string;\n  border?: borderStylingType;\n  borderActive?: borderStylingType;\n  borderInactive?: borderStylingType;\n}\n",
+            "properties": [
+                {
+                    "name": "border",
+                    "type": "borderStylingType",
+                    "optional": true,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "borderActive",
+                    "type": "borderStylingType",
+                    "optional": true,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "borderInactive",
+                    "type": "borderStylingType",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "colorBackground",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "colorBackgroundActive",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "colorBackgroundInactive",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "colorSlider",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "colorSliderActive",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "colorSliderInactive",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "AngTogglerService",
+            "id": "injectable-AngTogglerService-ca14c0565ca5eb0fbde9249df93b125b",
+            "file": "projects/ang-toggler/src/lib/ang-toggler.service.ts",
+            "properties": [],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Inject, Injectable } from '@angular/core';\nimport { AngTogglerConfigI, CONFIG_TOKEN } from './ang-toggler.module';\nimport { TogglerStylingI } from './models/toggler-styling.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class AngTogglerService {\n\n  constructor(\n    @Inject(CONFIG_TOKEN) private readonly moduleConfig: AngTogglerConfigI\n  ) { }\n\n  get moduleStyling(): TogglerStylingI {\n    return this.moduleConfig.styling || {};\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "moduleConfig",
+                        "type": "AngTogglerConfigI"
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "moduleConfig",
+                        "type": "AngTogglerConfigI",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "moduleStyling": {
+                    "name": "moduleStyling",
+                    "getSignature": {
+                        "name": "moduleStyling",
+                        "type": "",
+                        "returnType": "TogglerStylingI",
+                        "line": 14
+                    }
+                }
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "SliderStyleResolver",
+            "id": "class-SliderStyleResolver-ba211023529f9fe711477889a1f11fac",
+            "file": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/sub-resolvers/SliderStyleResolver.class.ts",
+            "type": "class",
+            "sourceCode": "import { TogglerStylingI } from '../../../../../models/toggler-styling.interface';\nimport { TogglerElemStyleResolver } from './TogglerElemStyleResolver.class';\n\nexport class SliderStyleResolver extends TogglerElemStyleResolver {\n  getClasses(): Record<string, boolean> {\n    return {};\n  }\n\n  getStyles(styling: TogglerStylingI, isActive: boolean, isDisabled: boolean): Record<string, string> {\n    const { colorSlider, colorSliderActive, colorSliderInactive } = styling;\n    return {\n      background: (isActive ? colorSliderActive : colorSliderInactive) || colorSlider || ''\n    };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "nativeEl",
+                    "type": "HTMLElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        113
+                    ],
+                    "inheritance": {
+                        "file": "TogglerElemStyleResolver"
+                    }
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Record<string, boolean>",
+                    "typeParameters": [],
+                    "line": 5
+                },
+                {
+                    "name": "getStyles",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 9,
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Record<string, boolean>",
+                    "typeParameters": [],
+                    "line": 10,
+                    "modifierKind": [
+                        117
+                    ],
+                    "inheritance": {
+                        "file": "TogglerElemStyleResolver"
+                    }
+                },
+                {
+                    "name": "getStyles",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 11,
+                    "modifierKind": [
+                        117
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TogglerElemStyleResolver"
+                    }
+                }
+            ],
+            "indexSignatures": [],
+            "extends": "TogglerElemStyleResolver",
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "SwitchStyleResolver",
+            "id": "class-SwitchStyleResolver-3fb3d09ceec1d582ca54d040c7cf8fed",
+            "file": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/sub-resolvers/SwitchStyleResolver.class.ts",
+            "type": "class",
+            "sourceCode": "import { TogglerDynamicClsEnum } from '../../../../../models/toggler-dynamic-cls.enum';\nimport { TogglerAttrEnum } from '../../../../../models/toggler-attr.enum';\nimport {\n  BorderStylingObjI,\n  borderStylingType,\n  TogglerStylingI\n} from '../../../../../models/toggler-styling.interface';\nimport { TogglerElemStyleResolver } from './TogglerElemStyleResolver.class';\n\nexport class SwitchStyleResolver extends TogglerElemStyleResolver {\n  static formBorderStyle(styling: TogglerStylingI, isActive: boolean): Record<string, string> {\n    const { border = '', borderActive, borderInactive } = styling;\n    const borderByActivity = (isActive ? borderActive : borderInactive) || {};\n\n    const mapStyles = (borderItem: borderStylingType, defaultBorder?: borderStylingType) => ({\n      ...typeof borderItem === 'string' && {\n        border: borderItem\n      },\n      ...typeof borderItem === 'object' && {\n        borderWidth: borderItem?.width ?? (defaultBorder as BorderStylingObjI).width ?? '',\n        borderStyle: borderItem?.style ?? (defaultBorder as BorderStylingObjI).style ?? '',\n        borderColor: borderItem?.color ?? (defaultBorder as BorderStylingObjI).color ?? '',\n      }\n    });\n\n    const resultBorder = Object.keys(borderByActivity || {}).length\n      ? borderByActivity\n      : border;\n\n    return mapStyles(resultBorder, border);\n  }\n\n  static formBackgroundStyle(styling: TogglerStylingI, isActive: boolean): Record<string, string> {\n    const { colorBackground, colorBackgroundActive, colorBackgroundInactive } = styling;\n    return {\n      background: (isActive ? colorBackgroundActive : colorBackgroundInactive) || colorBackground || ''\n    };\n  }\n\n  getClasses(): Record<string, boolean> {\n    return {\n      [TogglerDynamicClsEnum.Square]: this.nativeEl.hasAttribute(TogglerAttrEnum.TglSquare)\n    };\n  }\n\n  getStyles(styling: TogglerStylingI, isActive: boolean, isDisabled: boolean): Record<string, string> {\n    return {\n      cursor: isDisabled ? 'not-allowed' : '',\n      ...SwitchStyleResolver.formBackgroundStyle(styling, isActive),\n      ...SwitchStyleResolver.formBorderStyle(styling, isActive)\n    };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "nativeEl",
+                    "type": "HTMLElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        113
+                    ],
+                    "inheritance": {
+                        "file": "TogglerElemStyleResolver"
+                    }
+                }
+            ],
+            "methods": [
+                {
+                    "name": "formBackgroundStyle",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 33,
+                    "modifierKind": [
+                        115
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "formBorderStyle",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 11,
+                    "modifierKind": [
+                        115
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Record<string, boolean>",
+                    "typeParameters": [],
+                    "line": 40
+                },
+                {
+                    "name": "getStyles",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 46,
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Record<string, boolean>",
+                    "typeParameters": [],
+                    "line": 10,
+                    "modifierKind": [
+                        117
+                    ],
+                    "inheritance": {
+                        "file": "TogglerElemStyleResolver"
+                    }
+                },
+                {
+                    "name": "getStyles",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 11,
+                    "modifierKind": [
+                        117
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TogglerElemStyleResolver"
+                    }
+                }
+            ],
+            "indexSignatures": [],
+            "extends": "TogglerElemStyleResolver",
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TogglerElemStyleResolver",
+            "id": "class-TogglerElemStyleResolver-c5fc2d825ca427fd49bb723de52c253d",
+            "file": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/sub-resolvers/TogglerElemStyleResolver.class.ts",
+            "type": "class",
+            "sourceCode": "import { TogglerStylingI } from '../../../../../models/toggler-styling.interface';\n\nexport abstract class TogglerElemStyleResolver {\n  protected nativeEl: HTMLElement;\n\n  constructor(nativeEl: HTMLElement) {\n    this.nativeEl = nativeEl;\n  }\n\n  abstract getClasses(): Record<string, boolean>;\n  abstract getStyles(styling: TogglerStylingI, isActive: boolean, isDisabled: boolean): Record<string, string>;\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "nativeEl",
+                        "type": "HTMLElement"
+                    }
+                ],
+                "line": 4,
+                "jsdoctags": [
+                    {
+                        "name": "nativeEl",
+                        "type": "HTMLElement",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "nativeEl",
+                    "type": "HTMLElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        113
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Record<string, boolean>",
+                    "typeParameters": [],
+                    "line": 10,
+                    "modifierKind": [
+                        117
+                    ]
+                },
+                {
+                    "name": "getStyles",
+                    "args": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 11,
+                    "modifierKind": [
+                        117
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "styling",
+                            "type": "TogglerStylingI",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TogglerStyleResolver",
+            "id": "class-TogglerStyleResolver-e8850ba6da0b43d26fe91c548dd7fce1",
+            "file": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/TogglerStyleResolver.helper.ts",
+            "type": "class",
+            "sourceCode": "import { SliderStyleResolver } from './sub-resolvers/SliderStyleResolver.class';\nimport { SwitchStyleResolver } from './sub-resolvers/SwitchStyleResolver.class';\nimport { TogglerElemStyleResolver } from './sub-resolvers/TogglerElemStyleResolver.class';\n\nexport class TogglerStyleResolver {\n  private readonly sliderSR: SliderStyleResolver;\n  private readonly switchSR: SwitchStyleResolver;\n\n  constructor(nativeEl: HTMLElement) {\n    this.sliderSR = new SliderStyleResolver(nativeEl);\n    this.switchSR = new SwitchStyleResolver(nativeEl);\n  }\n\n  for(elem: 'slider' | 'switch'): TogglerElemStyleResolver {\n    return {\n      slider: this.sliderSR,\n      switch: this.switchSR\n    }[elem];\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "nativeEl",
+                        "type": "HTMLElement"
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "nativeEl",
+                        "type": "HTMLElement",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "sliderSR",
+                    "type": "SliderStyleResolver",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        112,
+                        132
+                    ]
+                },
+                {
+                    "name": "switchSR",
+                    "type": "SwitchStyleResolver",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "modifierKind": [
+                        112,
+                        132
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "for",
+                    "args": [
+                        {
+                            "name": "elem",
+                            "type": "\"slider\" | \"switch\""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "TogglerElemStyleResolver",
+                    "typeParameters": [],
+                    "line": 14,
+                    "jsdoctags": [
+                        {
+                            "name": "elem",
+                            "type": "\"slider\" | \"switch\"",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AngTogglerComponent",
+            "id": "component-AngTogglerComponent-a76a0001e2cb05f656f48473609b6239",
+            "file": "projects/ang-toggler/src/lib/components/ang-toggler/ang-toggler.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "STYLE_RESOLVER_PROVIDERS"
+                },
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AngTogglerComponent), multi: true\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "ang-toggler, ang-toggler[tgl-square]",
+            "styleUrls": [
+                "./ang-toggler.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ang-toggler.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "styling",
+                    "defaultValue": "{}",
+                    "line": 33,
+                    "type": "TogglerStylingI"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isActive",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "isDisabled",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getClasses",
+                    "args": [
+                        {
+                            "name": "elem",
+                            "type": "\"switch\" | \"slider\""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, boolean>",
+                    "typeParameters": [],
+                    "line": 78,
+                    "jsdoctags": [
+                        {
+                            "name": "elem",
+                            "type": "\"switch\" | \"slider\"",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getStyles",
+                    "args": [
+                        {
+                            "name": "elem",
+                            "type": "\"switch\" | \"slider\""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Record<string, string>",
+                    "typeParameters": [],
+                    "line": 82,
+                    "jsdoctags": [
+                        {
+                            "name": "elem",
+                            "type": "\"switch\" | \"slider\"",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 73,
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "v",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 68,
+                    "jsdoctags": [
+                        {
+                            "name": "v",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [],
+                    "argsDecorator": [],
+                    "line": 52
+                }
+            ],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  forwardRef,\n  HostListener,\n  Inject,\n  Input\n} from '@angular/core';\nimport { TogglerStyleResolver } from './helpers/toggler-style-resolver';\nimport { TogglerStylingI } from '../../models/toggler-styling.interface';\nimport { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { AngTogglerService } from '../../ang-toggler.service';\nimport { mergeObjects } from '../../utils/object.utils';\n\n@Component({\n  selector: 'ang-toggler, ang-toggler[tgl-square]',\n  templateUrl: './ang-toggler.component.html',\n  styleUrls: ['./ang-toggler.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [\n    STYLE_RESOLVER_PROVIDERS,\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AngTogglerComponent),\n      multi: true\n    }\n  ]\n})\nexport class AngTogglerComponent implements ControlValueAccessor {\n  @Input()\n  styling: TogglerStylingI = {};\n\n  isActive = false;\n  isDisabled = false;\n\n  private onChange = (v: boolean) => {};\n  private onTouched = () => {};\n\n  constructor(\n    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,\n    private readonly togglerService: AngTogglerService,\n    private readonly changeDetectorRef: ChangeDetectorRef\n  ) {}\n\n  private get resultStyling(): TogglerStylingI {\n    return mergeObjects(this.togglerService.moduleStyling, this.styling);\n  }\n\n  @HostListener('click')\n  toggle(): void {\n    if (!this.isDisabled) {\n      this.isActive = !this.isActive;\n      this.onTouched();\n      this.onChange(this.isActive);\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  writeValue(v: boolean): void {\n    this.isActive = v;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {\n    return this.styleResolver.for(elem).getClasses();\n  }\n\n  getStyles(elem: 'switch' | 'slider'): Record<string, string> {\n    return this.styleResolver.for(elem).getStyles(this.resultStyling, this.isActive, this.isDisabled);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".switch {\n  cursor: pointer;\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n  border-radius: 34px;\n  transition: .4s;\n  user-select: none;\n\n  &.square {\n    border-radius: 0;\n    .slider {\n      border-radius: 0;\n    }\n  }\n\n  .slider {\n    position: absolute;\n    background-color: #ccc;\n    transition: .4s;\n    border-radius: 34px;\n\n    height: 26px;\n    width: 26px;\n\n    left: 4px;\n    top: 4px;\n\n    &.active-slider {\n      transform: translateX(100%);\n    }\n  }\n}\n",
+                    "styleUrl": "./ang-toggler.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "styleResolver",
+                        "type": "TogglerStyleResolver"
+                    },
+                    {
+                        "name": "togglerService",
+                        "type": "AngTogglerService"
+                    },
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 39,
+                "jsdoctags": [
+                    {
+                        "name": "styleResolver",
+                        "type": "TogglerStyleResolver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "togglerService",
+                        "type": "AngTogglerService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "resultStyling": {
+                    "name": "resultStyling",
+                    "getSignature": {
+                        "name": "resultStyling",
+                        "type": "",
+                        "returnType": "TogglerStylingI",
+                        "line": 47
+                    }
+                }
+            },
+            "templateData": "<div\n  class=\"switch\"\n  [ngClass]=\"getClasses('switch')\"\n  [ngStyle]=\"getStyles('switch')\"\n  [class.active]=\"isActive\"\n>\n  <span\n    class=\"slider\"\n    [ngClass]=\"getClasses('slider')\"\n    [ngStyle]=\"getStyles('slider')\"\n    [class.active-slider]=\"isActive\"\n  ></span>\n</div>\n"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-9c780ade9ffe133b5486f3bcc3f48739",
+            "file": "projects/playground/src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "val1",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "val2",
+                    "defaultValue": "true",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css']\n})\nexport class AppComponent {\n  val1 = false;\n  val2 = true;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "Round: <ang-toggler [(ngModel)]=\"val1\" [disabled]=\"val2\"></ang-toggler> {{ val1 }} <br />\nSquare: <ang-toggler tgl-square [(ngModel)]=\"val2\" [styling]=\"{ colorBackgroundActive: 'yellow' }\"></ang-toggler> {{ val2 }}\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "file": "stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 40
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 20
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 32,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 48
+                    }
+                }
+            }
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
+            "file": "stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 53,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 56,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 59,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-8f196770333aa216860a88c0b6b221aa",
+            "file": "stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 64,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 73,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 67,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 70,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": ""
+        }
+    ],
+    "modules": [
+        {
+            "name": "AngTogglerModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AngTogglerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "AngTogglerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AngTogglerModule"
+                        },
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "CONFIG_TOKEN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ang-toggler/src/lib/ang-toggler.module.ts",
+                "type": "",
+                "defaultValue": "new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig')"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/playground/src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/playground/src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/playground/src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "mergeObjects",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ang-toggler/src/lib/utils/object.utils.ts",
+                "type": "",
+                "defaultValue": "(\n  target: Record<string, any>,\n  supplierOrSuppliers: Record<string, any>[] | Record<string, any>\n): Record<string, any> => {\n  const suppliers = Array.isArray(supplierOrSuppliers) ? [...supplierOrSuppliers] : [supplierOrSuppliers];\n\n  if (!suppliers.length) {\n    return target;\n  }\n\n  const lastSupplier = suppliers[suppliers.length - 1];\n  const merged = Object\n    .entries(lastSupplier)\n    .reduce((updated, [key, value]) => {\n      return { ...updated, [key]: value };\n    }, target);\n\n  return mergeObjects(merged, suppliers.slice(0, suppliers.length - 1));\n}",
+                "description": "<p>Merge objects fields</p>\n"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/playground/src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "STYLE_RESOLVER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                "type": "",
+                "defaultValue": "new InjectionToken<TogglerStyleResolver>('Toggler Style Resolver')"
+            },
+            {
+                "name": "STYLE_RESOLVER_PROVIDERS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                "type": "Provider[]",
+                "defaultValue": "[\n  {\n    provide: STYLE_RESOLVER,\n    deps: [ElementRef],\n    useFactory: styleResolverFactory\n  }\n]"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Page.stories.ts",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "TypeOne",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/AngToggler.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  props: {\n    styling: {\n      colorSlider: 'green',\n      border: '1px dotted black',\n      colorBackground: 'pink',\n    },\n    disabled: true\n  },\n  template: `\n    <ang-toggler></ang-toggler>\n  `\n})"
+            }
+        ],
+        "functions": [
+            {
+                "name": "styleResolverFactory",
+                "file": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {}
+                ],
+                "returnType": "TogglerStyleResolver",
+                "jsdoctags": [
+                    {
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "borderStyle",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"dotted\" | \"dashed\" | \"solid\" | \"double\" | \"groove\" | \"ridge\" | \"inset\" | \"outset\"",
+                "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "borderStylingType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "BorderStylingObjI | string",
+                "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+                "description": "",
+                "kind": 168
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "TogglerAttrEnum",
+                "childs": [
+                    {
+                        "name": "TglSquare",
+                        "value": "tgl-square"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "projects/ang-toggler/src/lib/models/toggler-attr.enum.ts"
+            },
+            {
+                "name": "TogglerDynamicClsEnum",
+                "childs": [
+                    {
+                        "name": "Square",
+                        "value": "square"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "projects/ang-toggler/src/lib/models/toggler-dynamic-cls.enum.ts"
+            }
+        ],
+        "groupedVariables": {
+            "projects/ang-toggler/src/lib/ang-toggler.module.ts": [
+                {
+                    "name": "CONFIG_TOKEN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ang-toggler/src/lib/ang-toggler.module.ts",
+                    "type": "",
+                    "defaultValue": "new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig')"
+                }
+            ],
+            "projects/playground/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/playground/src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/playground/src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "projects/playground/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/playground/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "projects/playground/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/playground/src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "stories/Button.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "Story<Button>",
+                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                }
+            ],
+            "stories/Header.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Header.stories.ts",
+                    "type": "Story<Header>",
+                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                }
+            ],
+            "stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Page.stories.ts",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                }
+            ],
+            "projects/ang-toggler/src/lib/utils/object.utils.ts": [
+                {
+                    "name": "mergeObjects",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ang-toggler/src/lib/utils/object.utils.ts",
+                    "type": "",
+                    "defaultValue": "(\n  target: Record<string, any>,\n  supplierOrSuppliers: Record<string, any>[] | Record<string, any>\n): Record<string, any> => {\n  const suppliers = Array.isArray(supplierOrSuppliers) ? [...supplierOrSuppliers] : [supplierOrSuppliers];\n\n  if (!suppliers.length) {\n    return target;\n  }\n\n  const lastSupplier = suppliers[suppliers.length - 1];\n  const merged = Object\n    .entries(lastSupplier)\n    .reduce((updated, [key, value]) => {\n      return { ...updated, [key]: value };\n    }, target);\n\n  return mergeObjects(merged, suppliers.slice(0, suppliers.length - 1));\n}",
+                    "description": "<p>Merge objects fields</p>\n"
+                }
+            ],
+            "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts": [
+                {
+                    "name": "STYLE_RESOLVER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                    "type": "",
+                    "defaultValue": "new InjectionToken<TogglerStyleResolver>('Toggler Style Resolver')"
+                },
+                {
+                    "name": "STYLE_RESOLVER_PROVIDERS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                    "type": "Provider[]",
+                    "defaultValue": "[\n  {\n    provide: STYLE_RESOLVER,\n    deps: [ElementRef],\n    useFactory: styleResolverFactory\n  }\n]"
+                }
+            ],
+            "stories/AngToggler.stories.ts": [
+                {
+                    "name": "TypeOne",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/AngToggler.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  props: {\n    styling: {\n      colorSlider: 'green',\n      border: '1px dotted black',\n      colorBackground: 'pink',\n    },\n    disabled: true\n  },\n  template: `\n    <ang-toggler></ang-toggler>\n  `\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts": [
+                {
+                    "name": "styleResolverFactory",
+                    "file": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {}
+                    ],
+                    "returnType": "TogglerStyleResolver",
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "projects/ang-toggler/src/lib/models/toggler-attr.enum.ts": [
+                {
+                    "name": "TogglerAttrEnum",
+                    "childs": [
+                        {
+                            "name": "TglSquare",
+                            "value": "tgl-square"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "projects/ang-toggler/src/lib/models/toggler-attr.enum.ts"
+                }
+            ],
+            "projects/ang-toggler/src/lib/models/toggler-dynamic-cls.enum.ts": [
+                {
+                    "name": "TogglerDynamicClsEnum",
+                    "childs": [
+                        {
+                            "name": "Square",
+                            "value": "square"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "projects/ang-toggler/src/lib/models/toggler-dynamic-cls.enum.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts": [
+                {
+                    "name": "borderStyle",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"dotted\" | \"dashed\" | \"solid\" | \"double\" | \"groove\" | \"ridge\" | \"inset\" | \"outset\"",
+                    "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+                    "description": "",
+                    "kind": 168
+                },
+                {
+                    "name": "borderStylingType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "BorderStylingObjI | string",
+                    "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "projects/playground/src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 5,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/ang-toggler/src/lib/ang-toggler.module.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AngTogglerConfigI",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/ang-toggler.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CONFIG_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/ang-toggler.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "AngTogglerService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/ang-toggler.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AngTogglerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/TogglerStyleResolver.helper.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TogglerStyleResolver",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/sub-resolvers/SliderStyleResolver.class.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "SliderStyleResolver",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/sub-resolvers/SwitchStyleResolver.class.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "SwitchStyleResolver",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/helpers/toggler-style-resolver/sub-resolvers/TogglerElemStyleResolver.class.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TogglerElemStyleResolver",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "styleResolverFactory",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "STYLE_RESOLVER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "STYLE_RESOLVER_PROVIDERS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "BorderStylingObjI",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TogglerStylingI",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/utils/object.utils.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "mergeObjects",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/playground/src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/playground/src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/playground/src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/playground/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/playground/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/AngToggler.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TypeOne",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            }
+        ]
+    }
+}
