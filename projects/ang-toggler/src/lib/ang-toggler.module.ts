@@ -5,6 +5,7 @@ import { TogglerStylingI } from './models/toggler-styling.interface';
 
 export interface AngTogglerConfigI {
   styling?: TogglerStylingI;
+  themes?: Record<string, TogglerStylingI>;
 }
 
 export const CONFIG_TOKEN = new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig');

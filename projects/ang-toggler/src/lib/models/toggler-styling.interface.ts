@@ -8,7 +8,7 @@ export interface BorderStylingObjI {
 
 export type borderStylingType = BorderStylingObjI | string;
 
-export interface TogglerStylingI{
+export interface TogglerStylingI {
   colorSlider?: string;
   colorSliderInactive?: string;
   colorSliderActive?: string;

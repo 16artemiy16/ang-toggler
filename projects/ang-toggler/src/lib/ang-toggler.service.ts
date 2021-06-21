@@ -14,4 +14,12 @@ export class AngTogglerService {
   get moduleStyling(): TogglerStylingI {
     return this.moduleConfig.styling || {};
   }
+
+  getThemeStyles(theme?: string): TogglerStylingI {
+    if (!theme) {
+      return this.moduleStyling;
+    }
+
+    return this.moduleConfig.themes?.[theme] || this.moduleStyling;
+  }
 }

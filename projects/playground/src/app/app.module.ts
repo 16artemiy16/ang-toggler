@@ -32,6 +32,14 @@ import { FormsModule } from '@angular/forms';
           width: '3px',
           style: 'solid'
         }
+      },
+      themes: {
+        primary: {
+          border: '1px blue solid'
+        },
+        error: {
+          border: '1px red solid'
+        }
       }
     }),
     FormsModule

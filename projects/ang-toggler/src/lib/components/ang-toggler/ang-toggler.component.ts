@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   forwardRef,
   HostListener,
   Inject,
@@ -15,7 +16,7 @@ import { AngTogglerService } from '../../ang-toggler.service';
 import { mergeObjects } from '../../utils/object.utils';
 
 @Component({
-  selector: 'ang-toggler, ang-toggler[tgl-square]',
+  selector: 'ang-toggler, ang-toggler[tgl-square] ang-toggler[theme]',
   templateUrl: './ang-toggler.component.html',
   styleUrls: ['./ang-toggler.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,11 +46,19 @@ export class AngTogglerComponent implements ControlValueAccessor {
   constructor(
     @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,
     private readonly togglerService: AngTogglerService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly el: ElementRef
   ) {}
 
   private get resultStyling(): TogglerStylingI {
-    return mergeObjects(this.togglerService.moduleStyling, this.styling);
+    return mergeObjects(
+      this.togglerService.getThemeStyles(this.theme),
+      this.styling
+    );
+  }
+
+  private get theme(): string | undefined {
+    return this.el.nativeElement.getAttribute('theme');
   }
 
   @HostListener('click')
