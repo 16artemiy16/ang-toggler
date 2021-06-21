@@ -4,14 +4,13 @@ AngToggler is a simple ultra-customizable toggle switch for Angular.
 ## Importing
 Add `AngTogglerModule` to the `imports` list of your root module:
 
-```
+```typescript
 import { AngTogglerModule } from 'ang-toggler'
 
 @NgModule({
   imports: [
-    // ...
+    ...
     AngTogglerModule.forRoot(config),
-    // ...
   ],
 })
 export class AppModule { }
@@ -19,17 +18,17 @@ export class AppModule { }
 
 You can pass `config` to `AngTogglerModule` and these styles
 will be applied to all togglers throughout the whole application:
-```
+```typescript
 AngTogglerModule.forRoot(config)
 ```
 
 You can also avoid passing config. Then you need to style each toggler separately:
-```
+```typescript
 AngTogglerModule.forRoot()
 ```
 
 The config example:
-```
+```typescript
 const config = {
   styling: {
     colorSliderInactive: 'red',
