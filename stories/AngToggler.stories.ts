@@ -10,7 +10,15 @@ export default {
       declarations: [],
       imports: [AngTogglerModule.forRoot()],
     }),
-  ]
+  ],
+  argTypes: {
+    disabled: {
+      name: 'disabled',
+      type: { name: 'boolean', required: false },
+      description: 'Is toggler disabled',
+      defaultValue: false
+    }
+  }
 } as Meta;
 
 const Template: Story<AngTogglerComponent> = (args) => ({
