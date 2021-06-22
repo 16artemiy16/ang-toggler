@@ -19,18 +19,15 @@ import { FormsModule } from '@angular/forms';
         colorSliderActive: 'green',
         colorBackgroundInactive: '#cdc7c7',
         colorBackgroundActive: '#16ff00',
-        border: {
-          color: 'grey',
-          width: '3px',
-          style: 'dotted'
-        },
         borderActive: {
           color: 'black',
           width: '3px',
+          style: 'dotted'
         },
         borderInactive: {
           width: '3px',
-          style: 'solid'
+          style: 'solid',
+          color: 'grey'
         }
       },
       themes: {

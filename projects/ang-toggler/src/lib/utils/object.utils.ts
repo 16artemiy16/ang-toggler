@@ -39,3 +39,9 @@ export const mergeObjects = (
 
   return mergeObjects(merged, suppliers.slice(0, suppliers.length - 1));
 };
+
+export const omit = (obj: Record<string, any>, fields: string[]) => {
+  return Object.keys(obj)
+    .filter((key) => fields.indexOf(key) < 0)
+    .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {});
+};
