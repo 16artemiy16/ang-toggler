@@ -3,10 +3,10 @@
     "interfaces": [
         {
             "name": "AngTogglerConfigI",
-            "id": "interface-AngTogglerConfigI-5b829c3288689e6e1ee78d709f63db07",
+            "id": "interface-AngTogglerConfigI-b55bdeb6dfcb6098c74dcc33678151dc",
             "file": "projects/ang-toggler/src/lib/ang-toggler.module.ts",
             "type": "interface",
-            "sourceCode": "import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';\nimport { AngTogglerComponent } from './components/ang-toggler/ang-toggler.component';\nimport { CommonModule } from '@angular/common';\nimport { TogglerStylingI } from './models/toggler-styling.interface';\n\nexport interface AngTogglerConfigI {\n  styling?: TogglerStylingI;\n}\n\nexport const CONFIG_TOKEN = new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig');\n\n@NgModule({\n  declarations: [\n    AngTogglerComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    AngTogglerComponent\n  ]\n})\nexport class AngTogglerModule {\n  static forRoot(config: AngTogglerConfigI = {}): ModuleWithProviders<AngTogglerModule> {\n    return {\n      ngModule: AngTogglerModule,\n      providers: [{\n        provide: CONFIG_TOKEN,\n        useValue: config\n      }]\n    };\n  }\n}\n",
+            "sourceCode": "import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';\nimport { AngTogglerComponent } from './components/ang-toggler/ang-toggler.component';\nimport { CommonModule } from '@angular/common';\nimport { TogglerStylingI } from './models/toggler-styling.interface';\n\nexport interface AngTogglerConfigI {\n  styling?: TogglerStylingI;\n  themes?: Record<string, TogglerStylingI>;\n}\n\nexport const CONFIG_TOKEN = new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig');\n\n@NgModule({\n  declarations: [\n    AngTogglerComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    AngTogglerComponent\n  ]\n})\nexport class AngTogglerModule {\n  static forRoot(config: AngTogglerConfigI = {}): ModuleWithProviders<AngTogglerModule> {\n    return {\n      ngModule: AngTogglerModule,\n      providers: [{\n        provide: CONFIG_TOKEN,\n        useValue: config\n      }]\n    };\n  }\n}\n",
             "properties": [
                 {
                     "name": "styling",
@@ -14,6 +14,13 @@
                     "optional": true,
                     "description": "",
                     "line": 7
+                },
+                {
+                    "name": "themes",
+                    "type": "Record<string | TogglerStylingI>",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
                 }
             ],
             "indexSignatures": [],
@@ -22,10 +29,10 @@
         },
         {
             "name": "BorderStylingObjI",
-            "id": "interface-BorderStylingObjI-2345b6368b16c231620bb21cec29c510",
+            "id": "interface-BorderStylingObjI-f2fff099e46e786e99b14f17a60c9eb5",
             "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
             "type": "interface",
-            "sourceCode": "export type borderStyle = 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';\n\nexport interface BorderStylingObjI {\n    color?: string;\n    style?: borderStyle;\n    width?: string;\n}\n\nexport type borderStylingType = BorderStylingObjI | string;\n\nexport interface TogglerStylingI{\n  colorSlider?: string;\n  colorSliderInactive?: string;\n  colorSliderActive?: string;\n  colorBackground?: string;\n  colorBackgroundInactive?: string;\n  colorBackgroundActive?: string;\n  border?: borderStylingType;\n  borderActive?: borderStylingType;\n  borderInactive?: borderStylingType;\n}\n",
+            "sourceCode": "export type borderStyle = 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';\n\nexport interface BorderStylingObjI {\n    color?: string;\n    style?: borderStyle;\n    width?: string;\n}\n\nexport type borderStylingType = BorderStylingObjI | string;\n\nexport interface TogglerStylingI {\n  colorSlider?: string;\n  colorSliderInactive?: string;\n  colorSliderActive?: string;\n  colorBackground?: string;\n  colorBackgroundInactive?: string;\n  colorBackgroundActive?: string;\n  border?: borderStylingType;\n  borderActive?: borderStylingType;\n  borderInactive?: borderStylingType;\n}\n",
             "properties": [
                 {
                     "name": "color",
@@ -55,10 +62,10 @@
         },
         {
             "name": "TogglerStylingI",
-            "id": "interface-TogglerStylingI-2345b6368b16c231620bb21cec29c510",
+            "id": "interface-TogglerStylingI-f2fff099e46e786e99b14f17a60c9eb5",
             "file": "projects/ang-toggler/src/lib/models/toggler-styling.interface.ts",
             "type": "interface",
-            "sourceCode": "export type borderStyle = 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';\n\nexport interface BorderStylingObjI {\n    color?: string;\n    style?: borderStyle;\n    width?: string;\n}\n\nexport type borderStylingType = BorderStylingObjI | string;\n\nexport interface TogglerStylingI{\n  colorSlider?: string;\n  colorSliderInactive?: string;\n  colorSliderActive?: string;\n  colorBackground?: string;\n  colorBackgroundInactive?: string;\n  colorBackgroundActive?: string;\n  border?: borderStylingType;\n  borderActive?: borderStylingType;\n  borderInactive?: borderStylingType;\n}\n",
+            "sourceCode": "export type borderStyle = 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';\n\nexport interface BorderStylingObjI {\n    color?: string;\n    style?: borderStyle;\n    width?: string;\n}\n\nexport type borderStylingType = BorderStylingObjI | string;\n\nexport interface TogglerStylingI {\n  colorSlider?: string;\n  colorSliderInactive?: string;\n  colorSliderActive?: string;\n  colorBackground?: string;\n  colorBackgroundInactive?: string;\n  colorBackgroundActive?: string;\n  border?: borderStylingType;\n  borderActive?: borderStylingType;\n  borderInactive?: borderStylingType;\n}\n",
             "properties": [
                 {
                     "name": "border",
@@ -132,12 +139,37 @@
     "injectables": [
         {
             "name": "AngTogglerService",
-            "id": "injectable-AngTogglerService-ca14c0565ca5eb0fbde9249df93b125b",
+            "id": "injectable-AngTogglerService-adcec72d4e02cd940e89887b4f46e7a9",
             "file": "projects/ang-toggler/src/lib/ang-toggler.service.ts",
             "properties": [],
-            "methods": [],
+            "methods": [
+                {
+                    "name": "getThemeStyles",
+                    "args": [
+                        {
+                            "name": "theme",
+                            "type": "string",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "TogglerStylingI",
+                    "typeParameters": [],
+                    "line": 19,
+                    "jsdoctags": [
+                        {
+                            "name": "theme",
+                            "type": "string",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "description": "",
-            "sourceCode": "import { Inject, Injectable } from '@angular/core';\nimport { AngTogglerConfigI, CONFIG_TOKEN } from './ang-toggler.module';\nimport { TogglerStylingI } from './models/toggler-styling.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class AngTogglerService {\n\n  constructor(\n    @Inject(CONFIG_TOKEN) private readonly moduleConfig: AngTogglerConfigI\n  ) { }\n\n  get moduleStyling(): TogglerStylingI {\n    return this.moduleConfig.styling || {};\n  }\n}\n",
+            "sourceCode": "import { Inject, Injectable } from '@angular/core';\nimport { AngTogglerConfigI, CONFIG_TOKEN } from './ang-toggler.module';\nimport { TogglerStylingI } from './models/toggler-styling.interface';\nimport { omit } from './utils/object.utils';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class AngTogglerService {\n\n  constructor(\n    @Inject(CONFIG_TOKEN) private readonly moduleConfig: AngTogglerConfigI\n  ) { }\n\n  get moduleStyling(): TogglerStylingI {\n    return this.moduleConfig.styling || {};\n  }\n\n  getThemeStyles(theme?: string): TogglerStylingI {\n    if (!theme) {\n      return this.moduleStyling;\n    }\n\n    const themeStyles = this.moduleConfig.themes?.[theme] || {};\n    const stylingToMerge = omit(\n      this.moduleStyling,\n      [\n        ...themeStyles.border ? ['borderActive', 'borderInactive'] : []\n      ]\n    );\n\n    return Object.assign(\n      {},\n      stylingToMerge,\n      themeStyles\n    );\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -147,7 +179,7 @@
                         "type": "AngTogglerConfigI"
                     }
                 ],
-                "line": 8,
+                "line": 9,
                 "jsdoctags": [
                     {
                         "name": "moduleConfig",
@@ -165,7 +197,7 @@
                         "name": "moduleStyling",
                         "type": "",
                         "returnType": "TogglerStylingI",
-                        "line": 14
+                        "line": 15
                     }
                 }
             },
@@ -726,7 +758,7 @@
     "components": [
         {
             "name": "AngTogglerComponent",
-            "id": "component-AngTogglerComponent-df1159d0a2d0b0e5bc85e990a53c27e2",
+            "id": "component-AngTogglerComponent-e810e11fc219c31226ca64c3dad5da07",
             "file": "projects/ang-toggler/src/lib/components/ang-toggler/ang-toggler.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -742,7 +774,7 @@
                     "type": "component"
                 }
             ],
-            "selector": "ang-toggler, ang-toggler[tgl-square]",
+            "selector": "ang-toggler, ang-toggler[tgl-square] ang-toggler[theme]",
             "styleUrls": [
                 "./ang-toggler.component.scss"
             ],
@@ -754,13 +786,13 @@
             "inputsClass": [
                 {
                     "name": "disabled",
-                    "line": 35,
+                    "line": 36,
                     "type": ""
                 },
                 {
                     "name": "styling",
                     "defaultValue": "{}",
-                    "line": 33,
+                    "line": 34,
                     "type": "TogglerStylingI"
                 }
             ],
@@ -772,7 +804,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 40
                 },
                 {
                     "name": "isDisabled",
@@ -780,7 +812,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 41
                 },
                 {
                     "name": "onChange",
@@ -788,7 +820,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 42,
+                    "line": 43,
                     "modifierKind": [
                         112
                     ]
@@ -799,7 +831,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 44,
                     "modifierKind": [
                         112
                     ]
@@ -817,7 +849,7 @@
                     "optional": false,
                     "returnType": "Record<string, boolean>",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 91,
                     "jsdoctags": [
                         {
                             "name": "elem",
@@ -839,7 +871,7 @@
                     "optional": false,
                     "returnType": "Record<string, string>",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 95,
                     "jsdoctags": [
                         {
                             "name": "elem",
@@ -861,7 +893,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 73,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -883,7 +915,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 77,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -905,7 +937,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 77,
+                    "line": 86,
                     "jsdoctags": [
                         {
                             "name": "isDisabled",
@@ -927,7 +959,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 72,
+                    "line": 81,
                     "jsdoctags": [
                         {
                             "name": "v",
@@ -945,13 +977,13 @@
                     "name": "click",
                     "args": [],
                     "argsDecorator": [],
-                    "line": 56
+                    "line": 65
                 }
             ],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  forwardRef,\n  HostListener,\n  Inject,\n  Input\n} from '@angular/core';\nimport { TogglerStyleResolver } from './helpers/toggler-style-resolver';\nimport { TogglerStylingI } from '../../models/toggler-styling.interface';\nimport { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { AngTogglerService } from '../../ang-toggler.service';\nimport { mergeObjects } from '../../utils/object.utils';\n\n@Component({\n  selector: 'ang-toggler, ang-toggler[tgl-square]',\n  templateUrl: './ang-toggler.component.html',\n  styleUrls: ['./ang-toggler.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [\n    STYLE_RESOLVER_PROVIDERS,\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AngTogglerComponent),\n      multi: true\n    }\n  ]\n})\nexport class AngTogglerComponent implements ControlValueAccessor {\n  @Input()\n  styling: TogglerStylingI = {};\n\n  @Input() set disabled(v: boolean | string) {\n    this.setDisabledState(v === true || v === '');\n  }\n\n  isActive = false;\n  isDisabled = false;\n\n  private onChange = (v: boolean) => {};\n  private onTouched = () => {};\n\n  constructor(\n    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,\n    private readonly togglerService: AngTogglerService,\n    private readonly changeDetectorRef: ChangeDetectorRef\n  ) {}\n\n  private get resultStyling(): TogglerStylingI {\n    return mergeObjects(this.togglerService.moduleStyling, this.styling);\n  }\n\n  @HostListener('click')\n  toggle(): void {\n    if (!this.isDisabled) {\n      this.isActive = !this.isActive;\n      this.onTouched();\n      this.onChange(this.isActive);\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  writeValue(v: boolean): void {\n    this.isActive = v;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {\n    return this.styleResolver.for(elem).getClasses();\n  }\n\n  getStyles(elem: 'switch' | 'slider'): Record<string, string> {\n    return this.styleResolver.for(elem).getStyles(this.resultStyling, this.isActive, this.isDisabled);\n  }\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  Inject,\n  Input\n} from '@angular/core';\nimport { TogglerStyleResolver } from './helpers/toggler-style-resolver';\nimport { TogglerStylingI } from '../../models/toggler-styling.interface';\nimport { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { AngTogglerService } from '../../ang-toggler.service';\nimport { mergeObjects } from '../../utils/object.utils';\n\n@Component({\n  selector: 'ang-toggler, ang-toggler[tgl-square] ang-toggler[theme]',\n  templateUrl: './ang-toggler.component.html',\n  styleUrls: ['./ang-toggler.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  providers: [\n    STYLE_RESOLVER_PROVIDERS,\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AngTogglerComponent),\n      multi: true\n    }\n  ]\n})\nexport class AngTogglerComponent implements ControlValueAccessor {\n  @Input()\n  styling: TogglerStylingI = {};\n\n  @Input() set disabled(v: boolean | string) {\n    this.setDisabledState(v === true || v === '');\n  }\n\n  isActive = false;\n  isDisabled = false;\n\n  private onChange = (v: boolean) => {};\n  private onTouched = () => {};\n\n  constructor(\n    @Inject(STYLE_RESOLVER) private readonly styleResolver: TogglerStyleResolver,\n    private readonly togglerService: AngTogglerService,\n    private readonly changeDetectorRef: ChangeDetectorRef,\n    private readonly el: ElementRef\n  ) {}\n\n  private get resultStyling(): TogglerStylingI {\n    return mergeObjects(\n      this.togglerService.getThemeStyles(this.theme),\n      this.styling\n    );\n  }\n\n  private get theme(): string | undefined {\n    return this.el.nativeElement.getAttribute('theme');\n  }\n\n  @HostListener('click')\n  toggle(): void {\n    if (!this.isDisabled) {\n      this.isActive = !this.isActive;\n      this.onTouched();\n      this.onChange(this.isActive);\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  writeValue(v: boolean): void {\n    this.isActive = v;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.isDisabled = isDisabled;\n    this.changeDetectorRef.markForCheck();\n  }\n\n  getClasses(elem: 'switch' | 'slider'): Record<string, boolean> {\n    return this.styleResolver.for(elem).getClasses();\n  }\n\n  getStyles(elem: 'switch' | 'slider'): Record<string, string> {\n    return this.styleResolver.for(elem).getStyles(this.resultStyling, this.isActive, this.isDisabled);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -975,9 +1007,13 @@
                     {
                         "name": "changeDetectorRef",
                         "type": "ChangeDetectorRef"
+                    },
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
                     }
                 ],
-                "line": 43,
+                "line": 44,
                 "jsdoctags": [
                     {
                         "name": "styleResolver",
@@ -996,6 +1032,13 @@
                     {
                         "name": "changeDetectorRef",
                         "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
                         "tagName": {
                             "text": "param"
                         }
@@ -1018,7 +1061,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 35,
+                        "line": 36,
                         "jsdoctags": [
                             {
                                 "name": "v",
@@ -1036,7 +1079,16 @@
                         "name": "resultStyling",
                         "type": "",
                         "returnType": "TogglerStylingI",
-                        "line": 51
+                        "line": 53
+                    }
+                },
+                "theme": {
+                    "name": "theme",
+                    "getSignature": {
+                        "name": "theme",
+                        "type": "",
+                        "returnType": "string | undefined",
+                        "line": 60
                     }
                 }
             },
@@ -1095,7 +1147,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "Round: <ang-toggler [(ngModel)]=\"val1\" [disabled]=\"val2\"></ang-toggler> {{ val1 }} <br />\nSquare: <ang-toggler tgl-square [(ngModel)]=\"val2\" [styling]=\"{ colorBackgroundActive: 'yellow' }\"></ang-toggler> {{ val2 }}\n"
+            "templateData": "Round: <ang-toggler [(ngModel)]=\"val1\" [disabled]=\"val2\"></ang-toggler> {{ val1 }} <br />\nSquare: <ang-toggler tgl-square [(ngModel)]=\"val2\" [styling]=\"{ colorBackgroundActive: 'yellow' }\"></ang-toggler> {{ val2 }}\n\n<br />\n<br />\nThemes <br />\n<ang-toggler theme=\"primary\"></ang-toggler>\n<br />\n<ang-toggler theme=\"error\"></ang-toggler>\n"
         }
     ],
     "modules": [
@@ -1276,6 +1328,14 @@
                 "type": "",
                 "defaultValue": "(\n  target: Record<string, any>,\n  supplierOrSuppliers: Record<string, any>[] | Record<string, any>\n): Record<string, any> => {\n  const suppliers = Array.isArray(supplierOrSuppliers) ? [...supplierOrSuppliers] : [supplierOrSuppliers];\n\n  if (!suppliers.length) {\n    return target;\n  }\n\n  const lastSupplier = suppliers[suppliers.length - 1];\n  const merged = Object\n    .entries(lastSupplier)\n    .reduce((updated, [key, value]) => {\n      return { ...updated, [key]: value };\n    }, target);\n\n  return mergeObjects(merged, suppliers.slice(0, suppliers.length - 1));\n}",
                 "description": "<p>Merge objects fields</p>\n"
+            },
+            {
+                "name": "omit",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ang-toggler/src/lib/utils/object.utils.ts",
+                "type": "",
+                "defaultValue": "(obj: Record<string, any>, fields: string[]) => {\n  return Object.keys(obj)\n    .filter((key) => fields.indexOf(key) < 0)\n    .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {});\n}"
             },
             {
                 "name": "require",
@@ -1468,6 +1528,14 @@
                     "type": "",
                     "defaultValue": "(\n  target: Record<string, any>,\n  supplierOrSuppliers: Record<string, any>[] | Record<string, any>\n): Record<string, any> => {\n  const suppliers = Array.isArray(supplierOrSuppliers) ? [...supplierOrSuppliers] : [supplierOrSuppliers];\n\n  if (!suppliers.length) {\n    return target;\n  }\n\n  const lastSupplier = suppliers[suppliers.length - 1];\n  const merged = Object\n    .entries(lastSupplier)\n    .reduce((updated, [key, value]) => {\n      return { ...updated, [key]: value };\n    }, target);\n\n  return mergeObjects(merged, suppliers.slice(0, suppliers.length - 1));\n}",
                     "description": "<p>Merge objects fields</p>\n"
+                },
+                {
+                    "name": "omit",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ang-toggler/src/lib/utils/object.utils.ts",
+                    "type": "",
+                    "defaultValue": "(obj: Record<string, any>, fields: string[]) => {\n  return Object.keys(obj)\n    .filter((key) => fields.indexOf(key) < 0)\n    .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {});\n}"
                 }
             ],
             "projects/ang-toggler/src/lib/components/ang-toggler/providers/toggler-style-resolver.provider.ts": [
@@ -1590,7 +1658,7 @@
                 "linktype": "interface",
                 "name": "AngTogglerConfigI",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -1609,7 +1677,7 @@
                 "linktype": "injectable",
                 "name": "AngTogglerService",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -1713,6 +1781,16 @@
                 "coveragePercent": 100,
                 "coverageCount": "1/1",
                 "status": "very-good"
+            },
+            {
+                "filePath": "projects/ang-toggler/src/lib/utils/object.utils.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "omit",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "projects/playground/src/app/app.component.ts",
