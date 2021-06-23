@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { AngTogglerConfigI, CONFIG_TOKEN } from './ang-toggler.module';
-import { TogglerStylingI } from './models/toggler-styling.interface';
+import { TogglerSizingI, TogglerSizingItemI, TogglerStylingI } from './models/toggler-styling.interface';
 import { omit } from './utils/object.utils';
+import { CssVarEnum } from './components/ang-toggler/helpers/toggler-style-resolver';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,15 @@ export class AngTogglerService {
   constructor(
     @Inject(CONFIG_TOKEN) private readonly moduleConfig: AngTogglerConfigI
   ) { }
+
+  getSizing(size: 'sm' | 'md' | 'lg', item?: CssVarEnum): TogglerSizingItemI | string | undefined {
+    const sizing = this.moduleConfig.sizing?.[size];
+    return item ? sizing?.[item] : sizing;
+  }
+
+  get sizing(): TogglerSizingI | undefined {
+    return this.moduleConfig.sizing;
+  }
 
   get moduleStyling(): TogglerStylingI {
     return this.moduleConfig.styling || {};

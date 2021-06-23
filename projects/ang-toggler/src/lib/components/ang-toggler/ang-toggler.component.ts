@@ -49,6 +49,16 @@ export class AngTogglerComponent implements ControlValueAccessor {
     this.styleResolver.setCssVar(CssVarEnum.SliderSize, v);
   }
 
+  @Input() set size(v: 'sm' | 'md' | 'lg') {
+    [CssVarEnum.Width, CssVarEnum.Height, CssVarEnum.SliderSize]
+      .forEach((item) => {
+        const val = this.togglerService.getSizing(v, item) as string;
+        if (val) {
+          this.styleResolver.setCssVar(item, val);
+        }
+      });
+  }
+
   isActive = false;
   isDisabled = false;
 

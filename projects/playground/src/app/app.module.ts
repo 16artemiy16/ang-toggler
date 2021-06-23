@@ -30,6 +30,23 @@ import { FormsModule } from '@angular/forms';
           color: 'grey'
         }
       },
+      sizing: {
+        sm: {
+          width: '50px',
+          height: '28px',
+          sliderSize: '23px'
+        },
+        md: {
+          width: '60px',
+          height: '34px',
+          sliderSize: '26px'
+        },
+        lg: {
+          width: '70px',
+          height: '40px',
+          sliderSize: '35px'
+        }
+      },
       themes: {
         primary: {
           border: '1px blue solid'
@@ -37,7 +54,7 @@ import { FormsModule } from '@angular/forms';
         error: {
           border: '1px red solid'
         }
-      }
+      },
     }),
     FormsModule
   ],

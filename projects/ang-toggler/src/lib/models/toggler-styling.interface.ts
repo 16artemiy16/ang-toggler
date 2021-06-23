@@ -19,3 +19,15 @@ export interface TogglerStylingI {
   borderActive?: borderStylingType;
   borderInactive?: borderStylingType;
 }
+
+export interface TogglerSizingItemI {
+  width: string;
+  height: string;
+  sliderSize: string;
+}
+
+export interface TogglerSizingI {
+  sm: TogglerSizingItemI;
+  md: TogglerSizingItemI;
+  lg: TogglerSizingItemI;
+}
