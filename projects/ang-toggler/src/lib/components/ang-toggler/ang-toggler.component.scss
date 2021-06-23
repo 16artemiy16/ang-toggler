@@ -39,7 +39,7 @@ $slider-size: var(--slider-size);
     width: $slider-size;
 
     &.active-slider {
-      transform: translateX(100%) translateX($padding-x);
+      transform: translateX(calc(#{$switch-width} - #{$slider-size}));
     }
   }
 }
