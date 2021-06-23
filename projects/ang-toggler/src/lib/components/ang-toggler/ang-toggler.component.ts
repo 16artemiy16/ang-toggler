@@ -8,7 +8,7 @@ import {
   Inject,
   Input
 } from '@angular/core';
-import { TogglerStyleResolver } from './helpers/toggler-style-resolver';
+import { CssVarEnum, TogglerStyleResolver } from './helpers/toggler-style-resolver';
 import { TogglerStylingI } from '../../models/toggler-styling.interface';
 import { STYLE_RESOLVER, STYLE_RESOLVER_PROVIDERS } from './providers/toggler-style-resolver.provider';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -35,6 +35,18 @@ export class AngTogglerComponent implements ControlValueAccessor {
 
   @Input() set disabled(v: boolean | string) {
     this.setDisabledState(v === true || v === '');
+  }
+
+  @Input() set width(v: string) {
+    this.styleResolver.setCssVar(CssVarEnum.Width, v);
+  }
+
+  @Input() set height(v: string) {
+    this.styleResolver.setCssVar(CssVarEnum.Height, v);
+  }
+
+  @Input() set sliderSize(v: string) {
+    this.styleResolver.setCssVar(CssVarEnum.SliderSize, v);
   }
 
   isActive = false;

@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   val1 = false;
   val2 = true;
+
+  width = '';
+  height = '';
+  sliderSize = '';
 }
