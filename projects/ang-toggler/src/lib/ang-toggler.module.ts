@@ -2,6 +2,7 @@ import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { AngTogglerComponent } from './components/ang-toggler/ang-toggler.component';
 import { CommonModule } from '@angular/common';
 import { TogglerSizingI, TogglerStylingI } from './models/toggler-styling.interface';
+import { populateDefault } from './config.helper';
 
 export interface AngTogglerConfigI {
   styling?: TogglerStylingI;
@@ -28,7 +29,7 @@ export class AngTogglerModule {
       ngModule: AngTogglerModule,
       providers: [{
         provide: CONFIG_TOKEN,
-        useValue: config
+        useValue: populateDefault(config)
       }]
     };
   }
