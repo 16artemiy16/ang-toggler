@@ -11,5 +11,4 @@ export class AppComponent {
 
   width = '';
   height = '';
-  sliderSize = '';
 }

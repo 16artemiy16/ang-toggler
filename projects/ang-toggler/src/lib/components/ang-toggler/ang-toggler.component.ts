@@ -45,10 +45,6 @@ export class AngTogglerComponent implements ControlValueAccessor {
     this.styleResolver.setCssVar(CssVarEnum.Height, v);
   }
 
-  @Input() set sliderSize(v: string) {
-    this.styleResolver.setCssVar(CssVarEnum.SliderSize, v);
-  }
-
   @Input() set size(v: 'sm' | 'md' | 'lg') {
     this.setSizing(v);
   }
@@ -80,7 +76,7 @@ export class AngTogglerComponent implements ControlValueAccessor {
   }
 
   private setSizing(v: 'sm' | 'md' | 'lg' = 'md'): void {
-    [CssVarEnum.Width, CssVarEnum.Height, CssVarEnum.SliderSize]
+    [CssVarEnum.Width, CssVarEnum.Height]
       .forEach((item) => {
         const val = this.togglerService.getSizing(v, item) as string;
         if (val) {

@@ -23,7 +23,6 @@ export interface TogglerStylingI {
 export interface TogglerSizingItemI {
   width: string;
   height: string;
-  sliderSize: string;
 }
 
 export interface TogglerSizingI {

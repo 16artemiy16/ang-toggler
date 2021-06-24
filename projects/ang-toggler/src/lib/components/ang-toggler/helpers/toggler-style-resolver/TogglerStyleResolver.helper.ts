@@ -4,14 +4,12 @@ import { TogglerElemStyleResolver } from './sub-resolvers/TogglerElemStyleResolv
 
 export enum CssVarEnum {
   Width = 'width',
-  Height = 'height',
-  SliderSize = 'sliderSize'
+  Height = 'height'
 }
 
 const CSS_VAR_MAP = {
   [CssVarEnum.Width]: '--switch-width',
-  [CssVarEnum.Height]: '--switch-height',
-  [CssVarEnum.SliderSize]: '--slider-size',
+  [CssVarEnum.Height]: '--switch-height'
 };
 
 export class TogglerStyleResolver {

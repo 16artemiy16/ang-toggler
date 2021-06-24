@@ -5,7 +5,7 @@ $padding-x: 4px;
 
 $switch-width: var(--switch-width);
 $switch-height: var(--switch-height);
-$slider-size: var(--slider-size);
+$slider-size: calc( var(--switch-height) - #{$padding-x} * 1.5 );
 
 .switch {
   cursor: pointer;
@@ -19,6 +19,8 @@ $slider-size: var(--slider-size);
 
   width: $switch-width;
   height: $switch-height;
+
+  border: 1px grey solid;
 
   &.square {
     border-radius: 0;

@@ -61,6 +61,5 @@ export const Size = Template.bind({});
 Size.args = {
   styling: { border: '1px black solid' },
   width: '60px',
-  height: '45px',
-  sliderSize: '30px'
+  height: '45px'
 };
