@@ -8,6 +8,7 @@ export interface AngTogglerConfigI {
   styling?: TogglerStylingI;
   themes?: Record<string, TogglerStylingI>;
   sizing?: TogglerSizingI;
+  themesInheritance?: Record<string, boolean>;
 }
 
 export const CONFIG_TOKEN = new InjectionToken<AngTogglerConfigI>('AngTogglerModuleConfig');

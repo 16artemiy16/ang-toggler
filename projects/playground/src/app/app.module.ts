@@ -38,6 +38,10 @@ import { FormsModule } from '@angular/forms';
           border: '1px red solid'
         }
       },
+      themesInheritance: {
+        primary: false,
+        error: false
+      }
     }),
     FormsModule
   ],

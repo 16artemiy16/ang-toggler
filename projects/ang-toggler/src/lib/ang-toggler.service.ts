@@ -26,18 +26,24 @@ export class AngTogglerService {
     return this.moduleConfig.styling || {};
   }
 
+  getThemeInheritance(theme: string): boolean {
+    return !!this.moduleConfig.themesInheritance?.[theme];
+  }
+
   getThemeStyles(theme?: string): TogglerStylingI {
     if (!theme) {
       return this.moduleStyling;
     }
 
     const themeStyles = this.moduleConfig.themes?.[theme] || {};
-    const stylingToMerge = omit(
-      this.moduleStyling,
-      [
-        ...themeStyles.border ? ['borderActive', 'borderInactive'] : []
-      ]
-    );
+    const stylingToMerge = this.getThemeInheritance(theme)
+      ? omit(
+          this.moduleStyling,
+          [
+           ...themeStyles.border ? ['borderActive', 'borderInactive'] : []
+          ]
+        )
+      : {};
 
     return Object.assign(
       {},

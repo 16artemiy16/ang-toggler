@@ -50,13 +50,7 @@ export class AngTogglerComponent implements ControlValueAccessor {
   }
 
   @Input() set size(v: 'sm' | 'md' | 'lg') {
-    [CssVarEnum.Width, CssVarEnum.Height, CssVarEnum.SliderSize]
-      .forEach((item) => {
-        const val = this.togglerService.getSizing(v, item) as string;
-        if (val) {
-          this.styleResolver.setCssVar(item, val);
-        }
-      });
+    this.setSizing(v);
   }
 
   isActive = false;
@@ -70,7 +64,9 @@ export class AngTogglerComponent implements ControlValueAccessor {
     private readonly togglerService: AngTogglerService,
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly el: ElementRef
-  ) {}
+  ) {
+    this.setSizing();
+  }
 
   private get resultStyling(): TogglerStylingI {
     return mergeObjects(
@@ -81,6 +77,16 @@ export class AngTogglerComponent implements ControlValueAccessor {
 
   private get theme(): string | undefined {
     return this.el.nativeElement.getAttribute('theme');
+  }
+
+  private setSizing(v: 'sm' | 'md' | 'lg' = 'md'): void {
+    [CssVarEnum.Width, CssVarEnum.Height, CssVarEnum.SliderSize]
+      .forEach((item) => {
+        const val = this.togglerService.getSizing(v, item) as string;
+        if (val) {
+          this.styleResolver.setCssVar(item, val);
+        }
+      });
   }
 
   @HostListener('click')
