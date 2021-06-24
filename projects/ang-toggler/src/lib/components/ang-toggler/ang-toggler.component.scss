@@ -1,11 +1,21 @@
 $padding-x: 4px;
-:host {
-}
 
+:host {
+  &.outer {
+    --slider-size: var(--switch-height);
+    .switch {
+      padding: 0;
+      height: calc(var(--switch-height) * 0.5);
+    }
+  }
+  &.inner {
+    --slider-size: calc( var(--switch-height) - #{$padding-x} * 1.5 );
+  }
+}
 
 $switch-width: var(--switch-width);
 $switch-height: var(--switch-height);
-$slider-size: calc( var(--switch-height) - #{$padding-x} * 1.5 );
+$slider-size: var(--slider-size);
 
 .switch {
   cursor: pointer;
@@ -20,7 +30,7 @@ $slider-size: calc( var(--switch-height) - #{$padding-x} * 1.5 );
   width: $switch-width;
   height: $switch-height;
 
-  border: 1px grey solid;
+  border: 3px grey solid;
 
   &.square {
     border-radius: 0;

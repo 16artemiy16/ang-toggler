@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   forwardRef,
+  HostBinding,
   HostListener,
   Inject,
   Input
@@ -48,6 +49,9 @@ export class AngTogglerComponent implements ControlValueAccessor {
   @Input() set size(v: 'sm' | 'md' | 'lg') {
     this.setSizing(v);
   }
+
+  @HostBinding('class')
+  @Input() type: 'outer' | 'inner' = 'inner';
 
   isActive = false;
   isDisabled = false;
